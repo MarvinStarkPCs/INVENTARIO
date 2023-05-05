@@ -1,0 +1,31 @@
+<div class="container p-4">
+  <div class="row">
+    <div class="col-md-4 mx-auto">
+      <form class="card card-body bg-dark text-white p-5" action="/signup" method="POST">
+        <h3 class="text-center fw-bold mb-4">SignUp</h3>
+
+        <label for="fullname">Ingresa tu nombre completo </label>
+        <input type="type" name="fullname" placeholder="Marvin Santos" class="form-control mb-3" autofocus />
+
+        <label for="username">Ingresa Email:</label>
+        <input type="email" name="email" placeholder="marvinsantos@email.com" class="form-control mb-3" />
+
+        <label for="password">Ingresa tu contraseña:</label>
+        <input type="password" name="password1" placeholder="Contraseña" class="form-control mb-3" />
+
+        {{!-- Confirm your password --}}
+        <label for="password">Confirma tu contraseña:</label>
+        <input type="password" name="password2" placeholder="Contraseña" class="form-control mb-3" />
+
+        <button class="btn btn-success btn-block">
+          Registrame
+        </button>
+    </div>
+    </form>
+
+    {{! Link }}
+    <p class="fs-5 text-center text-dark mt-3">¿Ya tienes una cuenta?
+      <a href="/signin" class="text-info">Iniciar sessión</a>
+    </p>
+  </div>
+</div>

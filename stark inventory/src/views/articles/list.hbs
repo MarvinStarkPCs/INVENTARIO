@@ -1,0 +1,142 @@
+
+<h1>Stark Inventory</h1>
+
+<div class="inputSearch">
+  <input id="FInput" class="form-control me-2 light-table-filter" data-table="tablaArticulos" type="text" placeholder="Buscar por Nombre, Marca, Descripción o capacidad del artículo deseado.">
+</div>
+
+<div class="container mt-4 shadow-lg p-3 mb-5 bg-body rounded">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalArticulo">Añadir Nuevo <i class="bi bi-plus-circle"></i></button>
+
+  <table id="tablaArticulos" class="table mt-2 table-bordered table-striped">
+    <thead>
+      <tr class="text-center">
+        <th>Codigo</th>
+        <th>Nombre del Producto</th>
+        <th>Marca</th>
+        <th>Descripción</th>
+        <th>Cantidad</th>
+        <th>Entrada</th>
+        <th>Salidas</th>
+        <th>Stock</th>
+        <th>Precio Costo</th>
+        <th>Precio Venta</th>
+        <th>Fecha de Ingreso</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each article}}
+      <tr>
+        <td>{{this.codigoBarra}}</td>
+        <td>{{this.nombreproducto}}</td>
+        <td>{{this.marca}}</td>
+        <td>{{this.descripcion}}</td>
+        <td>{{this.cantidad}}</td>
+        <td>{{this.entrada}}</td>
+        <td>{{this.salida}}</td>
+        <td>{{this.totalstock}}</td>
+        <td>{{this.preciocosto}}</td>
+        <td>{{this.precioventa}}</td>
+        <td>{{timeago created_at}}</td>
+      
+     <td class="text-center">
+      
+            <a class="btn btn-danger" href="/articles/delete/{{id}}">
+              Borrar Articulo
+            </a>
+            <a class="btn btn-secondary" href="/articles/edit/{{id}}">
+              Editar
+            </a>
+    </td>
+
+
+
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+<div id="modalArticulo" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="exampleModalLabel">Articulo</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form  action="/articles/add" method="POST" >
+
+          <div class="mb-3">
+            <label for="codigoBarra" class="col-form-label">codigo Barra:</label>
+            <input id="codigoBarra" name="codigoBarra" type="text" class="form-control" autofocus>
+          </div>
+
+             <div class="mb-3">
+            <label for="nombreproducto" class="col-form-label">Nombre del Producto:</label>
+            <input id="nombreproducto" name="nombreproducto" type="text" class="form-control" autofocus>
+          </div>
+
+           <div class="mb-3">
+            <label for="marca" class="col-form-label">Marca:</label>
+            <input id="marca" name="marca" type="text" class="form-control" autofocus>
+          </div>
+
+          <div class="mb-3">
+            <label for="descripcion" class="col-form-label">Descripción:</label>
+            <input id="descripcion" name="descripcion" type="text" class="form-control" autofocus>
+          </div>
+
+        <div class="mb-3">
+            <label for="cantidad" class="col-form-label">cantidad:</label>
+            <input id="cantidad" name="cantidad" type="text" class="form-control" autofocus>
+          </div>
+
+          <div class="mb-3">
+            <label for="entrada" class="col-form-label">Entradas</label>
+            <input id="entrada"  name="entrada" type="text" class="form-control">
+          </div>   
+
+          <div class="mb-3">
+            <label for="salida" class="col-form-label">Salidas</label>
+            <input id="salida" name="salida"type="text" class="form-control">
+          </div>   
+
+          <div class="mb-3">
+            <label for="totalstock" class="col-form-label">Totalstock</label>
+            <input id="totalstock" name="totalstock"type="number" class="form-control">
+          </div>  
+
+          <div class="mb-3">
+            <label for="precioventa" class="col-form-label">Precio Venta</label>
+            <input id="precioventa" name="precioventa" type="text" class="form-control">
+          </div>  
+             
+           <div class="mb-3">
+            <label for="preciocosto" class="col-form-label">precio Costo</label>
+            <input id="preciocosto" name="preciocosto" type="text" class="form-control">
+          </div> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script type="text/javascript" >
+
+$(document).ready(function(){
+    $(".light-table-filter").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#tablaArticulos tbody tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+})
+
+</script>

@@ -1,0 +1,17 @@
+<div class="container p-4">
+  <div class="row">
+    <div class="col-md-4 mx-auto">
+      <div class="card card-body bg-dark text-white text-center">
+        <h1 class="fw-bold">Bienvenido {{user.fullname}}</h1>
+        <h4>{{user.email}}</h4>
+        <form method="POST" action="/upload-profile-pic" enctype="multipart/form-data">
+          <div class="form-group mb-3">
+            <label for="profile-pic">Selecciona una imagen de perfil</label>
+            <input type="file" class="form-control" id="profile-pic" name="profile-pic" accept=".jpg, .jpeg, .png">
+          </div>
+          <button type="submit" class="btn btn-primary m-4">Subir imagen</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="container p-4 h-100">
+  <div class="row h-75 d-flex align-items-center">
+    <div class="col-md-4 mx-auto">
+      <div class="card bg-dark">
+        <form action="/articles/add" method="POST" class="card-body">
+
+          {{! Title and save button }}
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h1 class="text-light mb-3 h4">Crear nuevo articulo</h1>
+            <button class="btn btn-success btn-block">
+              Guardar
+            </button>
+          </div>
+          <label for="title">Escribe un Titulo:</label>
+          <input
+            type="text"
+            name="title"
+            class="form-control bg-dark text-light mb-3"
+            placeholder="Articulo"
+            autofocus
+          />
+
+          <label for="precio">Precio</label>
+          <input
+            type="text"
+            name="precio"
+            class="form-control bg-dark text-light mb-3"
+            placeholder="Precio"
+          />
+
+          <label for="description">Escribe un Descripción</label>
+          <textarea
+            name="description"
+            rows="2"
+            class="form-control bg-dark text-light mb-3"
+            placeholder="Descripción"
+          ></textarea>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
